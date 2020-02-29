@@ -1,0 +1,8 @@
+{
+  "name": "web-wallet-client-sdk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:abridged/web-wallet-client-sdk.git",
+  "author": "Jonathan Dunlap <jdunlap@outlook.com>",
+  "license": "MIT"
+}
