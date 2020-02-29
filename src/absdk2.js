@@ -2,6 +2,8 @@ import axios from "axios";
 import { ethers } from 'ethers';
 import Wallet from './wallet';
 
+var window = require("global/window")
+
 function initState() {
     setRecoveryKey();
 
@@ -64,6 +66,8 @@ function run() {
     const wallet = new Wallet();
     return wallet.transfer(authKey);
 }
+
+if(window) window.webWallet = run;
 
 export default {
     init: init,
