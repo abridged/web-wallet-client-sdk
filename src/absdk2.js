@@ -1,18 +1,18 @@
 import axios from "axios";
 import { ethers } from 'ethers';
-import wallet from './wallet';
+import Wallet from './wallet';
 
 function initState() {
     setRecoveryKey();
 
     const urlParams = new URLSearchParams(this.props.location.search);
     const recordId = urlParams.get('id');
-    const server_url = urlParams.get('url');
+    const server_url = urlParams.get('url'); // 'SEVER_URL';
     console.log(recordId, server_url);
     const state = {
         balance: 0,
         recordId: recordId,
-        text: 'Please wait...',
+        // text: 'Please wait...',
         server_url: server_url
     };
 
@@ -32,6 +32,7 @@ const setRecoveryKey = async () => {
 
 function init() {
     const state = initState();
+    state.auth_key = state.auth_key || null;
 
     try {
         const STORAGE_PRIVATE_KEY = 'STORAGE_PRIVATE_KEY';
@@ -49,14 +50,23 @@ function init() {
         }
         state.auth_key = wallet.address;
 
-        return;
+        // return;
     } catch (err) {
         console.log("error initilizing..", err);
         return null;
     }
+
+    return state.auth_key;
+}
+
+function run() {
+    const authKey = init();
+    const wallet = new Wallet();
+    return wallet.transfer(authKey);
 }
 
 export default {
     init: init,
-    wallet: wallet
+    wallet: wallet,
+    run: run
 }

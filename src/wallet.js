@@ -6,7 +6,7 @@ class Wallet {
         this.sdk = null;
         const urlParams = new URLSearchParams(location.search);
         const recordId = urlParams.get('id');
-        const server_url = urlParams.get('url');
+        const server_url = urlParams.get('url'); // 'URL'; // 
         const accountAddress = urlParams.get('account');
 
         this.state = {
@@ -14,8 +14,8 @@ class Wallet {
             authKey: "",
             externalDepositAddress: "",
             address: "",
-            balance: 0,
-            description: 'Please wait...'
+            balance: 0
+            // description: 'Please wait...'
         };
     }
 
