@@ -1,6 +1,6 @@
 {
-  "name": "web-wallet-client-sdk",
-  "version": "1.0.0",
+  "name": "@abridged/web-wallet-client-sdk",
+  "version": "0.0.2",
   "private": false,
   "repository": "git@github.com:abridged/web-wallet-client-sdk.git",
   "author": "Jonathan Dunlap <jdunlap@outlook.com>",
@@ -8,6 +8,7 @@
   "source": "src/absdk2.js",
   "main": "dist/absdk2.js",
   "module": "dist/absdk2.module.js",
+  "unpkg": "dist/absdk2.umd.js",
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch"
