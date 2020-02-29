@@ -2,12 +2,13 @@ import { ethers } from 'ethers';
 import { NotificationTypes, createKovanSdk } from 'abridged';
 
 class Wallet {
-    constructor(props) {
+    constructor() {
         this.sdk = null;
-        const urlParams = new URLSearchParams(this.props.location.search);
+        const urlParams = new URLSearchParams(location.search);
         const recordId = urlParams.get('id');
         const server_url = urlParams.get('url');
         const accountAddress = urlParams.get('account');
+
         this.state = {
             accountAddress: accountAddress,
             authKey: "",
@@ -16,18 +17,13 @@ class Wallet {
             balance: 0,
             description: 'Please wait...'
         };
-        this.handelFormSubmit = this.handelFormSubmit.bind(this);
     }
-
-    handelFormSubmit = address => {
-        this.transfer(address);
-    };
 
     init = async () => {
         try {
             const REACT_APP_INFURA_PROJECT_ID = "7acf175321ac4b3cba908ec2111dc297";
-            const STORAGE_PRIVATE_KEY = 'STORAGE_PRIVATE_KEY';
-            const privateKey = localStorage.getItem(STORAGE_PRIVATE_KEY);
+            const STORAGE_PRIVATE_KEY_NAME = 'STORAGE_PRIVATE_KEY';
+            const privateKey = localStorage.getItem(STORAGE_PRIVATE_KEY_NAME);
             this.sdk = createKovanSdk({
                 authKeyModule: {
                     privateKey
@@ -39,7 +35,7 @@ class Wallet {
             if (!privateKey) {
                 this.sdk
                     .exportPrivateKey()
-                    .then(privateKey => localStorage.setItem(STORAGE_PRIVATE_KEY, privateKey))
+                    .then(privateKey => localStorage.setItem(STORAGE_PRIVATE_KEY_NAME, privateKey))
                     .catch(() => null);
             }
         } catch (err) {
@@ -64,6 +60,7 @@ class Wallet {
 
     }
 
+    // Public interface
     async transfer(address) {
         this.listener();
         const options = {

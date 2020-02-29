@@ -1,7 +1,8 @@
 import axios from "axios";
 import { ethers } from 'ethers';
+import wallet from './wallet';
 
-function init() {
+function initState() {
     setRecoveryKey();
 
     const urlParams = new URLSearchParams(this.props.location.search);
@@ -29,7 +30,9 @@ const setRecoveryKey = async () => {
     window.close();
 };
 
-function init2(state) {
+function init() {
+    const state = initState();
+
     try {
         const STORAGE_PRIVATE_KEY = 'STORAGE_PRIVATE_KEY';
         const STORAGE_AUTH_KEY = 'auth_storage_key';
@@ -53,6 +56,7 @@ function init2(state) {
     }
 }
 
-export default async function () {
-    return "hello"
+export default {
+    init: init,
+    wallet: wallet
 }
