@@ -53,11 +53,10 @@ class Wallet {
         }
 
         // diff
+        // Sign trx to trf 0.01 eth to address below
         this.state.accountAddress = account.address;
         this.state.externalDepositAddress = account.externalDepositAddress;
         this.state.balance = 0;
-        this.state.description = 'Sign trx to trf 0.01 eth to address below';
-
     }
 
     // Public interface
