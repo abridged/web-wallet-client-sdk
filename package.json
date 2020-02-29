@@ -1,8 +1,26 @@
 {
   "name": "web-wallet-client-sdk",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": false,
   "repository": "git@github.com:abridged/web-wallet-client-sdk.git",
   "author": "Jonathan Dunlap <jdunlap@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "source": "src/absdk2.js",
+  "main": "dist/absdk2.js",
+  "module": "dist/absdk2.module.js",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "dependencies": {
+    "abridged": "^2.0.0-alpha.3",
+    "axios": "^0.19.2",
+    "eth-sdk": "^0.2.8",
+    "ethers": "^4.0.44",
+    "i": "^0.3.6",
+    "string_decoder": "^1.3.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.11.0"
+  }
 }
