@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "abridged": "^2.0.0-alpha.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "eth-sdk": "^0.2.8",
     "ethers": "^4.0.44",
     "global": "^4.4.0",
